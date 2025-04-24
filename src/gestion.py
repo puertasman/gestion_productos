@@ -5,8 +5,10 @@ from producto import Producto
 import mysql.connector
 
 class GestionInventario:
+    """" Clase para gestionar el inventario de productos"""
     @staticmethod
     def agregar_producto(producto: Producto):
+        """ Agrega un producto a la base de datos"""
         try:
             conexion = Conexion.obtener_conexion()
             cursor = conexion.cursor()
@@ -34,26 +36,7 @@ class GestionInventario:
 
     @staticmethod
     def mostrar_productos():
-    #     try:
-    #     conexion = Conexion.obtener_conexion()
-    #     cursor = conexion.cursor()
-    #     cursor.execute("SELECT id, nombre, cantidad, precio, categoria FROM productos")
-    #     resultados = cursor.fetchall()
-
-    #     if resultados:
-    #         print("\n📦 Lista de productos:")
-    #         for fila in resultados:
-    #             id, nombre, cantidad, precio, categoria = fila
-    #             print(f"[{id}] {nombre} - {cantidad} uds - {precio} € - Categoría: {categoria}")
-    #     else:
-    #         print("⚠️ No hay productos en el inventario.")
-    # except mysql.connector.Error as err:
-    #     print("❌ Error al mostrar productos:", err)
-    # finally:
-    #     if 'cursor' in locals():
-    #         cursor.close()
-    #     if 'conexion' in locals():
-    #         conexion.close()
+        """ Muestra todos los productos de la base de datos """
         try:
             conexion = Conexion.obtener_conexion()
             cursor = conexion.cursor()
@@ -61,7 +44,7 @@ class GestionInventario:
             resultados = cursor.fetchall()
             print(resultados)
         except mysql.connector.Error as e:
-            print("❌ Error al agregar producto:", err)
+            print("❌ Error al agregar producto:", e)
         finally:
             if 'cursor' in locals():
                 cursor.close()
