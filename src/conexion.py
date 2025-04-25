@@ -11,11 +11,11 @@ load_dotenv()  # Carga las variables desde un archivo .env
 class Conexion:
     """Clase para gestionar la conexión a la base de datos con pool de conexiones"""
 
-    DATABASE = os.getenv('DB_NAME', 'db-inventario_inventario')
-    USERNAME = os.getenv('DB_USER', 'asdfasdf')
-    PASSWORD = os.getenv('DB_PASSWORD', 'puertas1')
-    DB_PORT = int(os.getenv('DB_PORT', '3306'))
-    HOST = os.getenv('DB_HOST', 'mysql-db-inventario.alwaysdata.net')
+    DATABASE = os.getenv('DB_NAME')
+    USERNAME = os.getenv('DB_USER')
+    PASSWORD = os.getenv('DB_PASSWORD')
+    DB_PORT = int(os.getenv('DB_PORT', '3306'))  # Este sí puede tener valor por defecto
+    HOST = os.getenv('DB_HOST')
     POOLSIZE = int(os.getenv('DB_POOLSIZE', '5'))
     POOL_NAME = os.getenv('DB_POOL_NAME', 'inventario_pool')
     pool = None
