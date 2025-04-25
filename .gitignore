@@ -6,7 +6,7 @@ __pycache__/
 *.pyc
 src/conexion.py
 # Variables de entorno u otros archivos sensibles
-.env
+src/.env
 
 # Configuración de VSCode (opcional)
 .vscode/
