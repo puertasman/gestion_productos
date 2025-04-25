@@ -73,3 +73,21 @@ class GestionInventario:
             if 'conexion' in locals():
                 conexion.close()
         return productos
+
+    @staticmethod
+    def eliminar_producto(id_producto):
+        try:
+            conexion = Conexion.obtener_conexion()
+            cursor = conexion.cursor()
+            cursor.execute("DELETE FROM productos WHERE id = %s", (id_producto,))
+            conexion.commit()
+            return cursor.rowcount > 0
+        except mysql.connector.Error as err:
+            print("❌ Error al eliminar producto:", err)
+            return False
+        finally:
+            if 'cursor' in locals():
+                cursor.close()
+            if 'conexion' in locals():
+                conexion.close()
+

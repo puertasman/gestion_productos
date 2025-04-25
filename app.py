@@ -3,7 +3,7 @@ from src.gestion import GestionInventario
 from src.producto import Producto
 
 app = Flask(__name__)
-app.secret_key = 'unaFraseSugerente7732'
+app.secret_key = 'frase_secreta_para_cambiar_de_informacion'
 
 @app.route('/')
 @app.route('/index')
@@ -31,3 +31,15 @@ def agregar():
         return redirect(url_for('index'))
 
     return render_template('agregar.html')
+
+@app.route('/eliminar/<int:id>', methods=['POST'])
+def eliminar(id):
+    resultado = GestionInventario.eliminar_producto(id)
+    if resultado:
+        flash("🗑️ Producto eliminado correctamente", "success")
+    else:
+        flash("❌ Error al eliminar el producto", "danger")
+    return redirect(url_for('index'))
+
+if __name__ == '__main__':
+    app.run()

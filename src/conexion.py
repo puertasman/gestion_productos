@@ -12,7 +12,7 @@ class Conexion:
     """Clase para gestionar la conexión a la base de datos con pool de conexiones"""
 
     DATABASE = os.getenv('DB_NAME', 'db-inventario_inventario')
-    USERNAME = os.getenv('DB_USER', '410506')
+    USERNAME = os.getenv('DB_USER', 'asdasdf')
     PASSWORD = os.getenv('DB_PASSWORD', 'puertas1')
     DB_PORT = int(os.getenv('DB_PORT', '3306'))
     HOST = os.getenv('DB_HOST', 'mysql-db-inventario.alwaysdata.net')
